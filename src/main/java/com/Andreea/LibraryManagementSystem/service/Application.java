@@ -35,19 +35,22 @@ public class Application {
                 switch (inp) {
                     case 1 -> {
                         LOGGER.info("Please insert the name of the item");
-                        String nameItem = input.next();
+                        input.nextLine();
+                        String nameItem = input.nextLine();
                         Item item = userActions.getItem(nameItem);
                         System.out.println(item);
 
                     }
                     case 2 -> {
                         LOGGER.info("Please insert the name of the item you want to borrow");
-                        String borrowItem = input.next();
+                        input.nextLine();
+                        String borrowItem = input.nextLine();
                         userActions.borrowItem(borrowItem);
                     }
                     case 3 -> {
                         LOGGER.info("Please insert the name of the item you want to return");
-                        String returnItem = input.next();
+                        input.nextLine();
+                        String returnItem = input.nextLine();
                         userActions.returnItem(returnItem);
                     }
                     default -> LOGGER.info("Please choose a valid option!");
@@ -69,8 +72,10 @@ public class Application {
                 switch (inp) {
                     case 1 -> {
                         LOGGER.info("Please insert the name of the item");
-                        String nameItem = input.next();
-                        memberActions.searchItemByName(nameItem);
+                        input.nextLine();
+                        String nameItem = input.nextLine();
+                        Item item = memberActions.getItem(nameItem);
+                        System.out.println(item);
                     }
                     case 2 -> {
                         LOGGER.info("Please insert the name of the item you want to borrow");
@@ -107,7 +112,9 @@ public class Application {
                     case 1 -> {
                         LOGGER.info("Please insert the name of the item");
                         String nameItem = input.next();
-                        administratorActions.searchItemByName(nameItem);
+                        input.nextLine();
+                        Item item = administratorActions.getItem(nameItem);
+                        System.out.println(item);
                     }
                     case 2 -> {
                         LOGGER.info("Please insert the name of the item you want to borrow");
@@ -142,6 +149,7 @@ public class Application {
                     }
                     case 9 -> {
                         LOGGER.info("Insert name of the author");
+                        input.nextLine();
                         String authorName = input.next();
                         administratorActions.getAllTheItemsFromOneAuthor(authorName);
                     }

@@ -21,14 +21,14 @@ public class UserActions implements BasicOperations {
 
     @Override
     public void borrowItem(String name) {
-        Item item = searchItemByName(name);
-
+        Item item = getItem(name);
         if (item != null) {
             if (!item.isBorrowed()) {
                 item.setBorrowed(true);
-                LOGGER.info("You borrowed the book: " + name);
+                libraryRepository.save(item);
+                LOGGER.info("You borrowed the item: " + name);
             } else {
-                LOGGER.info("This book is not available!");
+                LOGGER.info("This item is not available!");
             }
         } else {
             LOGGER.info("The item was not found!");

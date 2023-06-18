@@ -29,7 +29,7 @@ public class Item {
         this.yearOfPublishing = yearOfPublishing;
         this.genre = genre;
         this.isBorrowed = isBorrowed;
-        this.isReserved= isReserved;
+        this.isReserved = isReserved;
     }
 
     public Item() {
@@ -90,16 +90,6 @@ public class Item {
     public void setReserved(boolean reserved) {
         isReserved = reserved;
     }
-
-    public void borrow() {
-        if (isBorrowed) {
-            LOGGER.info("This book is borrowed");
-        } else {
-            LOGGER.info("This book is available");
-        }
-
-    }
-
 
     @Override
     public String toString() {
