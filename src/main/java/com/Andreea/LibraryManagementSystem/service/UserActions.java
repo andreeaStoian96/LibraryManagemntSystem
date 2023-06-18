@@ -5,9 +5,10 @@ import com.Andreea.LibraryManagementSystem.exception.ItemNotFoundException;
 import com.Andreea.LibraryManagementSystem.repository.LibraryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
+@Service
 public class UserActions implements BasicOperations {
 
     LibraryRepository libraryRepository;
@@ -51,10 +52,15 @@ public class UserActions implements BasicOperations {
     }
 
     @Override
+    public Item getItem(String name) {
+        return searchItemByName(name);
+    }
+
+    @Override
     public Item searchItemByName(String name) {
-        Optional<Item> optionalItem = libraryRepository.findByName(name);
-        optionalItem.
-                orElseThrow(() -> new ItemNotFoundException(String.format("No item found for name %s", name)));
-        return optionalItem.orElseGet(optionalItem::get);
+        return libraryRepository.findByName(name)
+                .orElseThrow(() -> new ItemNotFoundException(String.format("No item found for name %s", name)));
     }
 }
+
+

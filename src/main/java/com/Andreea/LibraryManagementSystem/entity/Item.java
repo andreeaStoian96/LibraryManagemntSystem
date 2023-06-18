@@ -20,13 +20,16 @@ public class Item {
     protected String genre;
     protected boolean isBorrowed;
 
-    public Item(int id, String name, String author, int yearOfPublishing, String genre, boolean isBorrowed) {
+    protected boolean isReserved;
+
+    public Item(int id, String name, String author, int yearOfPublishing, String genre, boolean isBorrowed, boolean isReserved) {
         this.id = id;
         this.name = name;
         this.author = author;
         this.yearOfPublishing = yearOfPublishing;
         this.genre = genre;
         this.isBorrowed = isBorrowed;
+        this.isReserved= isReserved;
     }
 
     public Item() {
@@ -80,6 +83,14 @@ public class Item {
         isBorrowed = borrowed;
     }
 
+    public boolean isReserved() {
+        return isReserved;
+    }
+
+    public void setReserved(boolean reserved) {
+        isReserved = reserved;
+    }
+
     public void borrow() {
         if (isBorrowed) {
             LOGGER.info("This book is borrowed");
@@ -89,14 +100,11 @@ public class Item {
 
     }
 
+
     @Override
     public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", yearOfPublishing=" + yearOfPublishing +
-                ",isBorrowed=" + isBorrowed() +
-                '}';
+        return String.format("Item{id=%d, name='%s', author='%s', yearOfPublishing=%d, isBorrowed=%s, isReserved=%s}",
+                id, name, author, yearOfPublishing, isBorrowed(), isReserved());
     }
+
 }

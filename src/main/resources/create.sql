@@ -4,5 +4,6 @@ CREATE TABLE item (
   author VARCHAR(100),
   year_Of_Publishing INT,
   genre VARCHAR(50),
-  is_Borrowed BOOLEAN
+  is_Borrowed BOOLEAN,
+  is_Reserved BOOLEAN
 );
