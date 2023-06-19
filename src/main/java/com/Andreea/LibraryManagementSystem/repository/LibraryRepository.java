@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface LibraryRepository extends JpaRepository<Item, Integer>{
 
-  Optional<Item> findByName(String name);
+  Optional<Item> findByTitle(String name);
 
   List<Item> findByOrderByAuthor();
 

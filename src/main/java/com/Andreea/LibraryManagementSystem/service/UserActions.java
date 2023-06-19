@@ -59,7 +59,7 @@ public class UserActions implements BasicOperations {
 
     @Override
     public Item searchItemByName(String name) {
-        return libraryRepository.findByName(name)
+        return libraryRepository.findByTitle(name)
                 .orElseThrow(() -> new ItemNotFoundException(String.format("No item found for name %s", name)));
     }
 }

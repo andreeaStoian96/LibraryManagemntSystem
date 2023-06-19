@@ -14,7 +14,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
-    protected String name;
+    protected String title;
     protected String author;
     protected int yearOfPublishing;
     protected String genre;
@@ -22,9 +22,9 @@ public class Item {
 
     protected boolean isReserved;
 
-    public Item(int id, String name, String author, int yearOfPublishing, String genre, boolean isBorrowed, boolean isReserved) {
+    public Item(int id, String title, String author, int yearOfPublishing, String genre, boolean isBorrowed, boolean isReserved) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.author = author;
         this.yearOfPublishing = yearOfPublishing;
         this.genre = genre;
@@ -35,12 +35,12 @@ public class Item {
     public Item() {
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getId() {
@@ -94,7 +94,7 @@ public class Item {
     @Override
     public String toString() {
         return String.format("Item{id=%d, name='%s', author='%s', yearOfPublishing=%d, isBorrowed=%s, isReserved=%s}",
-                id, name, author, yearOfPublishing, isBorrowed(), isReserved());
+                id, title, author, yearOfPublishing, isBorrowed(), isReserved());
     }
 
 }

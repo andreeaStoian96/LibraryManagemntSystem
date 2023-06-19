@@ -112,8 +112,8 @@ public class Application {
                 switch (inp) {
                     case 1 -> {
                         LOGGER.info("Please insert the name of the item");
-                        String nameItem = input.next();
                         input.nextLine();
+                        String nameItem = input.nextLine();
                         Item item = administratorActions.getItem(nameItem);
                         System.out.println(item);
                     }
@@ -155,7 +155,7 @@ public class Application {
                     case 9 -> {
                         LOGGER.info("Insert name of the author");
                         input.nextLine();
-                        String authorName = input.next();
+                        String authorName = input.nextLine();
                         administratorActions.getAllTheItemsFromOneAuthor(authorName);
                     }
                     case 10 -> {

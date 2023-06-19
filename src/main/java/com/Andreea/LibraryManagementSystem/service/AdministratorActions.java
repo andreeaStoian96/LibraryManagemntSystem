@@ -10,13 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.Andreea.LibraryManagementSystem.util.Messages.genreMessage;
+
 @Service
 public class AdministratorActions extends MemberActions {
     private static final Logger LOGGER = LoggerFactory.getLogger(AdministratorActions.class);
@@ -34,23 +32,27 @@ public class AdministratorActions extends MemberActions {
     public void returnItem(String name) {
         super.returnItem(name);
     }
+
     @Override
     public Item searchItemByName(String name) {
         return super.searchItemByName(name);
     }
+
     @Override
     public void reserveItem(String name) {
         super.reserveItem(name);
     }
+
     public Item saveItem(Item item) {
         libraryRepository.save(item);
         return item;
     }
+
     public Item addItem() {
         Item item = new Item();
         Scanner input = new Scanner(System.in);
         LOGGER.info("Enter the title of the item");
-        item.setName(input.nextLine());
+        item.setTitle(input.nextLine());
         LOGGER.info("Enter the author");
         item.setAuthor(input.nextLine());
         LOGGER.info("Enter the publishing year");
@@ -69,7 +71,7 @@ public class AdministratorActions extends MemberActions {
     }
 
     public void deleteItem(String name) {
-      Optional<Item> optionalItem = libraryRepository.findByName(name);
+        Optional<Item> optionalItem = libraryRepository.findByTitle(name);
         if (optionalItem.isPresent()) {
             libraryRepository.delete(optionalItem.get());
         } else {
@@ -78,12 +80,27 @@ public class AdministratorActions extends MemberActions {
     }
 
     public List<Item> getAllTheAvailableItems() {
-        return libraryRepository.findByIsBorrowed(false);
+        List<Item> availableItems = libraryRepository.findByIsBorrowed(false);
+        List<Item> validatedItems = new ArrayList<>();
+
+        for (Item item : availableItems) {
+            validatedItems.add(item);
+            LOGGER.info(String.valueOf(item));
+        }
+        return validatedItems;
     }
 
     public List<Item> getAllTheBorrowedItems() {
-        return libraryRepository.findByIsBorrowed(true);
+        List<Item> availableItems = libraryRepository.findByIsBorrowed(true);
+        List<Item> validatedItems = new ArrayList<>();
+
+        for (Item item : availableItems) {
+            validatedItems.add(item);
+            LOGGER.info(String.valueOf(item));
+        }
+        return validatedItems;
     }
+
     public void getAllTheItemsFromOneAuthor(String author) {
         Map<String, List<Item>> authorName = libraryRepository.findByOrderByAuthor().stream()
                 .filter(item -> item.getAuthor().equals(author))
@@ -95,9 +112,10 @@ public class AdministratorActions extends MemberActions {
         }
 
         LOGGER.info("Author is: {}\nItems written by the author:", author);
-        itemList.forEach(item -> LOGGER.info(item.getName()));
+        itemList.forEach(item -> LOGGER.info(item.getTitle()));
         LOGGER.info("\n");
     }
+
     public void getAllItemsFromASpecificYear(int year) {
         Map<Integer, List<Item>> yearOfPublishing = libraryRepository.findByOrderByYearOfPublishingDesc()
                 .stream().filter(y -> y.getYearOfPublishing() == year)
@@ -110,7 +128,7 @@ public class AdministratorActions extends MemberActions {
         LOGGER.info("Year Of Publishing is: {}\nItems from that year:", year);
 
         itemList.forEach(item -> LOGGER.info("Name: {}, Author: {}, Is item borrow: {}",
-                item.getName(), item.getAuthor(), item.isBorrowed()));
+                item.getTitle(), item.getAuthor(), item.isBorrowed()));
         LOGGER.info("\n");
     }
 }
