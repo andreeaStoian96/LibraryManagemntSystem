@@ -41,9 +41,10 @@ public class UserActions implements BasicOperations {
         if (returnItem != null) {
             if (returnItem.isBorrowed()) {
                 returnItem.setBorrowed(false);
-                LOGGER.info("You returned the book" + name);
+                libraryRepository.save(returnItem);
+                LOGGER.info("You returned the book " + name);
             } else {
-                LOGGER.info("This item is not from our library!");
+                LOGGER.info("This item is not borrowed from our library!");
             }
         } else {
             LOGGER.info("The item was not found!");

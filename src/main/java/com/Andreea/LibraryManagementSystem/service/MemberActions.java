@@ -35,6 +35,7 @@ public class MemberActions extends UserActions {
         if (reservedItem != null) {
             if (!reservedItem.isReserved() && reservedItem.isBorrowed()) {
                 reservedItem.setReserved(true);
+                libraryRepository.save(reservedItem);
                 LOGGER.info("You reserved: " + reservedItem);
             } else if (!reservedItem.isReserved() && !reservedItem.isBorrowed()) {
                 LOGGER.info("You can borrow this item, it is available");

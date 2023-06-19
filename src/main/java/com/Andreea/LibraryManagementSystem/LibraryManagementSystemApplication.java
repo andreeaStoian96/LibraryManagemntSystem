@@ -30,7 +30,7 @@ public class LibraryManagementSystemApplication {
         SpringApplication.run(LibraryManagementSystemApplication.class, args);
         Scanner input = new Scanner(System.in);
         do {
-            mainMessages();
+             mainMessages();
             int inp = input.nextInt();
             switch (inp) {
                 case 1 -> application.userOperations();

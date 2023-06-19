@@ -38,7 +38,7 @@ public class Application {
                         input.nextLine();
                         String nameItem = input.nextLine();
                         Item item = userActions.getItem(nameItem);
-                        System.out.println(item);
+                        LOGGER.info(String.valueOf(item));
 
                     }
                     case 2 -> {
@@ -63,10 +63,10 @@ public class Application {
 
     public void memberOperations() {
         Scanner input = new Scanner(System.in);
-        do {
-            LOGGER.info("Welcome Member! \n Please insert your password");
-            String pass = input.next();
-            if (pass.equals("member")) {
+        LOGGER.info("Welcome Member! \n Please insert your password");
+        String pass = input.next();
+        if (pass.equals("member")) {
+            do {
                 memberApplicationsMessage();
                 int inp = input.nextInt();
                 switch (inp) {
@@ -94,18 +94,19 @@ public class Application {
                     }
                     default -> LOGGER.info("Please choose a valid option!");
                 }
-            } else {
-                LOGGER.info("Incorrect password!");
-            }
-        } while (input.nextInt() <= 3);
+            } while (input.nextInt() <= 3);
+        } else {
+            LOGGER.info("Incorrect password!");
+        }
     }
 
     public void administratorOperations() {
         Scanner input = new Scanner(System.in);
-        do {
-            LOGGER.info("Welcome Administrator! \n Please insert your password");
-            String pass = input.next();
-            if (pass.equals("admin")) {
+
+        LOGGER.info("Welcome Administrator! \n Please insert your password");
+        String pass = input.next();
+        if (pass.equals("admin")) {
+            do {
                 adminApplicationsMessage();
                 int inp = input.nextInt();
                 switch (inp) {
@@ -118,17 +119,20 @@ public class Application {
                     }
                     case 2 -> {
                         LOGGER.info("Please insert the name of the item you want to borrow");
-                        String borrowItem = input.next();
+                        input.nextLine();
+                        String borrowItem = input.nextLine();
                         administratorActions.borrowItem(borrowItem);
                     }
                     case 3 -> {
                         LOGGER.info("Please insert the name of the item you want to return");
-                        String returnItem = input.next();
+                        input.nextLine();
+                        String returnItem = input.nextLine();
                         administratorActions.returnItem(returnItem);
                     }
                     case 4 -> {
                         LOGGER.info("Please insert the name of the item you want to reserve");
-                        String reserveItem = input.next();
+                        input.nextLine();
+                        String reserveItem = input.nextLine();
                         administratorActions.reserveItem(reserveItem);
                     }
                     case 5 -> {
@@ -137,7 +141,8 @@ public class Application {
                     }
                     case 6 -> {
                         LOGGER.info("Please insert the name of the item you want to delete: ");
-                        String deleteName = input.next();
+                        input.nextLine();
+                        String deleteName = input.nextLine();
                         administratorActions.deleteItem(deleteName);
                         LOGGER.info("Item deleted!");
                     }
@@ -160,9 +165,9 @@ public class Application {
                     }
                     default -> LOGGER.info("Please choose a valid option!");
                 }
-            } else {
-                LOGGER.info("Incorrect password!");
-            }
-        } while (input.nextInt() <= 6);
+            } while (input.nextInt() <= 6);
+        } else {
+            LOGGER.info("Incorrect password!");
+        }
     }
 }

@@ -59,13 +59,12 @@ public class AdministratorActions extends MemberActions {
         int number = input.nextInt();
         Genre[] values = Genre.values();
 
-        for (Genre value : Genre.values()) {
-            if (number == value.ordinal()) {
-                item.setGenre(String.valueOf(values[number].name()));
-            } else {
-                LOGGER.info("Please choose a correct number from the list!");
-            }
+        if (number >= 1 && number <= values.length) {
+            item.setGenre(String.valueOf(values[number - 1].name()));
+        } else {
+            LOGGER.info("Please choose a correct number from the list!");
         }
+
         return item;
     }
 
