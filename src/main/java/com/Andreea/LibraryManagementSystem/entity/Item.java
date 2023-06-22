@@ -93,7 +93,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return String.format("Item{id=%d, name='%s', author='%s', yearOfPublishing=%d, isBorrowed=%s, isReserved=%s}",
+        return String.format("\nItem{id=%d, name='%s', author='%s', yearOfPublishing=%d, isBorrowed=%s, isReserved=%s}",
                 id, title, author, yearOfPublishing, isBorrowed(), isReserved());
     }
 

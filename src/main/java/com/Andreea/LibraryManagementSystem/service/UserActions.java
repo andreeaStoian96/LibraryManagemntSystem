@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class UserActions implements BasicOperations {
@@ -26,12 +28,12 @@ public class UserActions implements BasicOperations {
             if (!item.isBorrowed()) {
                 item.setBorrowed(true);
                 libraryRepository.save(item);
-                LOGGER.info("You borrowed the item: " + name);
+                LOGGER.info("\nYou borrowed the item: " + name);
             } else {
-                LOGGER.info("This item is not available!");
+                LOGGER.info("\nThis item is not available!");
             }
         } else {
-            LOGGER.info("The item was not found!");
+            LOGGER.info("\nThe item was not found!");
         }
     }
 
@@ -42,12 +44,12 @@ public class UserActions implements BasicOperations {
             if (returnItem.isBorrowed()) {
                 returnItem.setBorrowed(false);
                 libraryRepository.save(returnItem);
-                LOGGER.info("You returned the book " + name);
+                LOGGER.info("\nYou returned the book " + name);
             } else {
-                LOGGER.info("This item is not borrowed from our library!");
+                LOGGER.info("\nThis item is not borrowed from our library!");
             }
         } else {
-            LOGGER.info("The item was not found!");
+            LOGGER.info("\nThe item was not found!");
         }
 
     }
@@ -59,9 +61,15 @@ public class UserActions implements BasicOperations {
 
     @Override
     public Item searchItemByName(String name) {
-        return libraryRepository.findByTitle(name)
-                .orElseThrow(() -> new ItemNotFoundException(String.format("No item found for name %s", name)));
+        try {
+            return libraryRepository.findByTitle(name)
+                    .orElseThrow(() -> new ItemNotFoundException(String.format("\nNo item found for name %s", name)));
+        } catch (ItemNotFoundException e) {
+            LOGGER.error(e.getMessage(), e);
+        }
+        return new Item();
     }
+
 }
 
 

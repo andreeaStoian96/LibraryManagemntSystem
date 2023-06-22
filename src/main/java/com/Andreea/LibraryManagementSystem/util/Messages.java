@@ -8,6 +8,7 @@ public class Messages {
 
     public static void filtersMessages() {
         LOGGER.info("""
+                
                 Choose from the filters: 
                 1:View all authors
                 2:View all borrow items
@@ -19,6 +20,7 @@ public class Messages {
 
     public static void mainOperationsMessage() {
         LOGGER.info("""
+                
                 Press:
                 1. For adding an item
                 2. For searching an item 
@@ -28,25 +30,30 @@ public class Messages {
 
     public static void userApplicationsMessage() {
         LOGGER.info("""
+                
                 Welcome user!
                 Press:
                 1. For searching an item
                 2. For borrowing an item
                 3. For returning an item 
+                4. For going back to main operations
                 """);
     }
     public static void memberApplicationsMessage() {
         LOGGER.info("""
+                
                 Welcome member!
                 Press:
                 1. For searching an item
                 2. For borrowing an item
                 3. For returning an item 
                 4. For reserving an item
+                5. For going back to main operations
                 """);
     }
     public static void mainMessages(){
         LOGGER.info("""
+                
                 Welcome to library!
                 Please select your role!
                 1. User
@@ -56,6 +63,7 @@ public class Messages {
     }
     public static void adminApplicationsMessage() {
         LOGGER.info("""
+                
                 Welcome admin!
                 Press:
                 1. For searching an item
@@ -68,10 +76,12 @@ public class Messages {
                 8. Get all the borrowed items
                 9. Search based on author name
                 10. Search based on year of publishing
+                11. For going back to main operations
                 """);
     }
     public static void genreMessage(){
         LOGGER.info("""
+                
                 Please chose the genre from our list:
                 0: LITERARY_FICTION,
                 1: NON_FICTION,

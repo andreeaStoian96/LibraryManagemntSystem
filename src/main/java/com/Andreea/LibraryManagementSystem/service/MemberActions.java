@@ -36,14 +36,14 @@ public class MemberActions extends UserActions {
             if (!reservedItem.isReserved() && reservedItem.isBorrowed()) {
                 reservedItem.setReserved(true);
                 libraryRepository.save(reservedItem);
-                LOGGER.info("You reserved: " + reservedItem);
+                LOGGER.info("\nYou reserved: " + reservedItem);
             } else if (!reservedItem.isReserved() && !reservedItem.isBorrowed()) {
-                LOGGER.info("You can borrow this item, it is available");
+                LOGGER.info("\nYou can borrow this item, it is available");
             } else {
-                LOGGER.info("This item is already reserved");
+                LOGGER.info("\nThis item is already reserved");
             }
         }else {
-            LOGGER.info("This item is not in our library!");
+            LOGGER.info("\nThis item is not in our library!");
         }
     }
 

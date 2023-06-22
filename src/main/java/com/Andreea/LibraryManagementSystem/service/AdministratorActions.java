@@ -51,11 +51,11 @@ public class AdministratorActions extends MemberActions {
     public Item addItem() {
         Item item = new Item();
         Scanner input = new Scanner(System.in);
-        LOGGER.info("Enter the title of the item");
+        LOGGER.info("\nEnter the title of the item");
         item.setTitle(input.nextLine());
-        LOGGER.info("Enter the author");
+        LOGGER.info("\nEnter the author");
         item.setAuthor(input.nextLine());
-        LOGGER.info("Enter the publishing year");
+        LOGGER.info("\nEnter the publishing year");
         item.setYearOfPublishing(input.nextInt());
         genreMessage();
         int number = input.nextInt();
@@ -64,7 +64,7 @@ public class AdministratorActions extends MemberActions {
         if (number >= 1 && number <= values.length) {
             item.setGenre(String.valueOf(values[number - 1].name()));
         } else {
-            LOGGER.info("Please choose a correct number from the list!");
+            LOGGER.info("\nPlease choose a correct number from the list!");
         }
 
         return item;
@@ -75,7 +75,7 @@ public class AdministratorActions extends MemberActions {
         if (optionalItem.isPresent()) {
             libraryRepository.delete(optionalItem.get());
         } else {
-            throw new ItemNotFoundException("Item not found: " + name);
+            throw new ItemNotFoundException("\nItem not found: " + name);
         }
     }
 
@@ -108,12 +108,11 @@ public class AdministratorActions extends MemberActions {
 
         List<Item> itemList = authorName.get(author);
         if (itemList == null || itemList.isEmpty()) {
-            throw new AuthorNotFoundException("Author not found: " + author);
+            throw new AuthorNotFoundException("\nAuthor not found: " + author);
         }
 
-        LOGGER.info("Author is: {}\nItems written by the author:", author);
+        LOGGER.info("\nAuthor is: {}\nItems written by the author:", author);
         itemList.forEach(item -> LOGGER.info(item.getTitle()));
-        LOGGER.info("\n");
     }
 
     public void getAllItemsFromASpecificYear(int year) {
@@ -123,11 +122,11 @@ public class AdministratorActions extends MemberActions {
 
         List<Item> itemList = yearOfPublishing.get(year);
         if (itemList == null || itemList.isEmpty()) {
-            throw new YearNotFoundException("Year not found: " + year);
+            throw new YearNotFoundException("\nYear not found: " + year);
         }
-        LOGGER.info("Year Of Publishing is: {}\nItems from that year:", year);
+        LOGGER.info("\nYear Of Publishing is: {}\nItems from that year:", year);
 
-        itemList.forEach(item -> LOGGER.info("Name: {}, Author: {}, Is item borrow: {}",
+        itemList.forEach(item -> LOGGER.info("\nName: {}, Author: {}, Is item borrow: {}",
                 item.getTitle(), item.getAuthor(), item.isBorrowed()));
         LOGGER.info("\n");
     }
