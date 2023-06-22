@@ -8,7 +8,7 @@ public class Messages {
 
     public static void filtersMessages() {
         LOGGER.info("""
-                
+                                
                 Choose from the filters: 
                 1:View all authors
                 2:View all borrow items
@@ -20,7 +20,7 @@ public class Messages {
 
     public static void mainOperationsMessage() {
         LOGGER.info("""
-                
+                                
                 Press:
                 1. For adding an item
                 2. For searching an item 
@@ -30,7 +30,7 @@ public class Messages {
 
     public static void userApplicationsMessage() {
         LOGGER.info("""
-                
+                                
                 Welcome user!
                 Press:
                 1. For searching an item
@@ -39,9 +39,10 @@ public class Messages {
                 4. For going back to main operations
                 """);
     }
+
     public static void memberApplicationsMessage() {
         LOGGER.info("""
-                
+                                
                 Welcome member!
                 Press:
                 1. For searching an item
@@ -51,9 +52,10 @@ public class Messages {
                 5. For going back to main operations
                 """);
     }
-    public static void mainMessages(){
+
+    public static void mainMessages() {
         LOGGER.info("""
-                
+                                
                 Welcome to library!
                 Please select your role!
                 1. User
@@ -61,9 +63,10 @@ public class Messages {
                 3. Admin
                 """);
     }
+
     public static void adminApplicationsMessage() {
         LOGGER.info("""
-                
+                                
                 Welcome admin!
                 Press:
                 1. For searching an item
@@ -79,9 +82,10 @@ public class Messages {
                 11. For going back to main operations
                 """);
     }
-    public static void genreMessage(){
+
+    public static void genreMessage() {
         LOGGER.info("""
-                
+                                
                 Please chose the genre from our list:
                 0: LITERARY_FICTION,
                 1: NON_FICTION,

@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface LibraryRepository extends JpaRepository<Item, Integer>{
+public interface LibraryRepository extends JpaRepository<Item, Integer> {
 
-  Optional<Item> findByTitle(String name);
+    Optional<Item> findByTitle(String name);
 
-  List<Item> findByOrderByAuthor();
+    List<Item> findByOrderByAuthor();
 
-  List<Item> findByIsBorrowed(boolean isBorrowed);
+    List<Item> findByIsBorrowed(boolean isBorrowed);
 
-  List<Item>findByOrderByYearOfPublishingDesc();
+    List<Item> findByOrderByYearOfPublishingDesc();
 }

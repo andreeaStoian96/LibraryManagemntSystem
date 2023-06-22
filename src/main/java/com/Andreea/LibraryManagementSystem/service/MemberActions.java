@@ -42,9 +42,8 @@ public class MemberActions extends UserActions {
             } else {
                 LOGGER.info("\nThis item is already reserved");
             }
-        }else {
+        } else {
             LOGGER.info("\nThis item is not in our library!");
         }
     }
-
 }

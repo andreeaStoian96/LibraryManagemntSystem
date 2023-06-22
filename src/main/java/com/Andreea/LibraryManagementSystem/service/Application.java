@@ -22,7 +22,8 @@ public class Application {
         this.memberActions = memberActions;
         this.administratorActions = administratorActions;
     }
-    public void mainOperations(){
+
+    public void mainOperations() {
         Scanner input = new Scanner(System.in);
         do {
             mainMessages();
@@ -70,7 +71,7 @@ public class Application {
                         String returnItem = input.nextLine();
                         userActions.returnItem(returnItem);
                     }
-                    case 4 ->{
+                    case 4 -> {
                         mainOperations();
                     }
                     default -> LOGGER.info("\nPlease choose a valid option!");
@@ -186,7 +187,7 @@ public class Application {
                         int year = input.nextInt();
                         administratorActions.getAllItemsFromASpecificYear(year);
                     }
-                    case 11 ->{
+                    case 11 -> {
                         mainOperations();
                     }
                     default -> LOGGER.info("\nPlease choose a valid option!");

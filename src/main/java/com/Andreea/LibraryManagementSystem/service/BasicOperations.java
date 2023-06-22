@@ -10,6 +10,4 @@ public interface BasicOperations {
     void returnItem(String name);
 
     Item searchItemByName(String name);
-
-
 }
